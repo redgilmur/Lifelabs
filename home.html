@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FurGoods</title>
+  <style>
+    
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    header {
+      background-color: #89Cff0;
+      color: rgb(0, 0, 0);
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    #search-bar {
+      display: flex;
+      align-items: center;
+    }
+
+    #search-bar input {
+      width: 300px;
+      padding: 8px;
+      border: none;
+      border-radius: 4px;
+    }
+
+    #search-bar button {
+      margin-left: 10px;
+      padding: 8px 16px;
+      background-color: white;
+      color: #89Cff0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    
+    .expanding-cards {
+      display: flex;
+      gap: 10px;
+      overflow-x: scroll;
+      margin: 20px 0;
+    }
+
+    .card {
+      flex: 0 0 20%;
+      height: 200px;
+      border-radius: 10px;
+      background-size: cover;
+      background-position: center;
+      cursor: pointer;
+      transition: flex 0.3s ease-in-out;
+    }
+
+    .card:hover {
+      flex: 0 0 40%;
+    }
+
+    
+    .progress-container {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+
+    .progress-bar {
+      display: flex;
+      align-items: center;
+      width: 80%;
+      position: relative;
+    }
+
+    .step {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: lightgray;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background 0.3s ease-in-out;
+    }
+
+    .step.active {
+      background:  #89Cff0;
+    }
+
+    .line {
+      flex: 1;
+      height: 4px;
+      background: lightgray;
+      position: relative;
+      transition: background 0.3s ease-in-out;
+    }
+
+    .line.active {
+      background: #89Cff0;
+    }
+
+    
+    .faq {
+      margin: 20px 0;
+    }
+
+    .faq-item {
+      border: 1px solid #ddd;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+
+    .faq-question {
+      background: #89Cff0;
+      color: rgb(0, 0, 0);
+      padding: 10px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 10px;
+      background: #fff;
+      border-top: 1px solid #ddd;
+    }
+
+    
+    .navigation {
+      background:  #89Cff0;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .navigation.hide {
+      transform: translateY(-100%);
+    }
+
+    .video-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 20px;
+      flex-wrap: wrap;
+    }
+
+    .video-item {
+      flex: 1;
+      min-width: 300px;
+      max-width: 45%;
+    }
+
+    .video-item video {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .caption {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    
+    @media (max-width: 768px) {
+      .video-item {
+        max-width: 100%;
+      }
+    }
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>FurGoods</h1>
+    <div id="search-bar">
+      <input type="text" placeholder="Search for videos..." id="searchInput">
+      <button onclick="searchVideos()">Search</button>
+    </div>
+  </header>
+
+  <div class="navigation" id="navigation">Group 1: Audrey Baron, Sabrina Lacbayan, Jaaz Molejon, Harries Agrezor, Kiehl Dela Cruz. </div>
+
+ 
+  <section class="expanding-cards" id="expandingCards">
+    <div class="card" style="background-image: url('fg.jpg');" data-title="Card 1"></div>
+    <div class="card" style="background-image: url('fgl.jpg');" data-title="Card 2"></div>
+    <div class="card" style="background-image: url('fgt.jpg');" data-title="Card 3"></div>
+  </section>
+
+ 
+  <section class="progress-container">
+    <div class="progress-bar">
+      <div class="step active">1</div>
+      <div class="line"></div>
+      <div class="step">2</div>
+      <div class="line"></div>
+      <div class="step">3</div>
+    </div>
+  </section>
+
+ 
+  <section class="faq">
+    <div class="faq-item">
+      <div class="faq-question">What is FurGoods?</div>
+      <div class="faq-answer">Our brand is a is an animal based brand, which means we sell products used to make and grow a healthy pet, whether that be a pet dog or cat. Our brand sells dog and cat food which consists of all the nescessary vitamins and minerals to grow a healthy dog or cat, we also sell dog and cat toys so that your pet can be happy, as well as dog houses, costumes for pets, scratch posts, catnip items, and more!</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Mission statement and Tagline</div>
+      <div class="faq-answer">We hope to promote and encourage a healthy-happy lifestyle for all your household pets and create more possibilities for homeless animals. Our tagline "Fun Fur Pets!" is all about creating joyful experiences for your furry friends. From exciting toys to cozy accessories, it's a brand dedicated to enhancing your pet's everyday life. Whether it’s playtime or relaxation, the products are designed to keep tails wagging and whiskers twitching. With a focus on safety and quality, every item is crafted to ensure happiness and comfort for pets and their owners alike. "Fun Fur Pets!" brings endless fun and care to the ones you love most.</div>
+            
+      <section class="video-container">
+        <div class="video-item">
+          <video controls>
+            <source src="Video_20241119_105017_761.mp4" type="video/mp4">
+           
+          </video>
+          <div class="caption">FurGoods Intro</div>
+        </div>
+        <div class="video-item">
+          <video controls>
+            <source src="khiel.mp4" type="video/mp4">
+            
+          </video>
+          <div class="caption">FurGoods Advertising Content | Fun Fur Pets!</div>
+        </div>
+      </video>
+     
+
+      </section>
+    </section>
+
+      
+      </div>
+        </div>
+      </section>
+    </section>
+
+    </div>
+  </section>
+  <br>
+  <br>
+
+
+  <script>
+    
+    const cards = document.querySelectorAll(".card");
+    cards.forEach(card => {
+      card.addEventListener("click", () => {
+        cards.forEach(c => c.classList.remove("active"));
+        card.classList.add("active");
+      });
+    });
+
+    
+    const steps = document.querySelectorAll(".step");
+    const lines = document.querySelectorAll(".line");
+    let currentStep = 0;
+
+    document.body.addEventListener("click", () => {
+      if (currentStep < steps.length) {
+        steps[currentStep].classList.add("active");
+        if (lines[currentStep - 1]) lines[currentStep - 1].classList.add("active");
+        currentStep++;
+      }
+    });
+
+    
+    const faqQuestions = document.querySelectorAll(".faq-question");
+    faqQuestions.forEach(question => {
+      question.addEventListener("click", () => {
+        const answer = question.nextElementSibling;
+        answer.style.display = answer.style.display === "block" ? "none" : "block";
+      });
+    });
+
+  
+    const navigation = document.getElementById("navigation");
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > lastScrollY) {
+        navigation.classList.add("hide");
+      } else {
+        navigation.classList.remove("hide");
+      }
+      lastScrollY = window.scrollY;
+    });
+  </script>
+</body>
+</html>
